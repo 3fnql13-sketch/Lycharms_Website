@@ -1,1 +1,0 @@
-Lycharms Website – Initial setup
