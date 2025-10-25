@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* small custom styles */
+html, body, #root { height: 100%; }
+/* sparkles */
+.sparkles::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.6) 0 2px, transparent 2px),
+                    radial-gradient(circle at 80% 30%, rgba(255,255,255,0.5) 0 2px, transparent 2px),
+                    radial-gradient(circle at 30% 70%, rgba(255,255,255,0.4) 0 2px, transparent 2px),
+                    radial-gradient(circle at 70% 80%, rgba(255,255,255,0.45) 0 2px, transparent 2px);
+  opacity: 0.9;
+  animation: sparkleMove 10s linear infinite;
+  filter: blur(0.6px);
+  mix-blend-mode: screen;
+}
+@keyframes sparkleMove {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px) rotate(3deg); }
+  100% { transform: translateY(0px); }
+}
+
+/* ribbons */
+.ribbons .ribbon {
+  position: absolute;
+  width: 180px;
+  height: 60px;
+  background: linear-gradient(90deg,#ffbbec,#ffd6f0);
+  border-radius: 30px;
+  opacity: 0.5;
+  transform: rotate(-15deg);
+  animation: ribbonFloat 6s ease-in-out infinite;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+.ribbons .top-left { top: 20px; left: -40px; transform: rotate(-20deg); }
+.ribbons .top-right { top: 60px; right: -50px; transform: rotate(10deg); animation-delay: 1s; }
+.ribbons .bottom-left { bottom: 60px; left: -30px; transform: rotate(10deg); animation-delay: 2s; }
+.ribbons .bottom-right { bottom: 20px; right: -40px; transform: rotate(-10deg); animation-delay: 3s; }
+@keyframes ribbonFloat {
+  0% { transform: translateY(0) rotate(-10deg) scale(1); }
+  50% { transform: translateY(-10px) rotate(-6deg) scale(1.02); }
+  100% { transform: translateY(0) rotate(-10deg) scale(1); }
+}
+
+/* small adjustments for the heart button */
+button[aria-label="Scroll to top"]{ font-size: 20px; }
